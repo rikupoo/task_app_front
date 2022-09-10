@@ -1,3 +1,5 @@
+import axios from "./plugins/axios";
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -25,6 +27,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    'plugins/axios' // axios.jsを読み込むように設定
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,8 +45,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    //環境変数のAPI_URLがある場合そちらが優先優先されるので下記は必要なくなる
+    // baseURL: process.env.API_URL
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
