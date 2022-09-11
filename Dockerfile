@@ -11,7 +11,7 @@ ENV HOME=/${WORKDIR} \
     #https://ja.nuxtjs.org/faq/host-port/
     HOST=0.0.0.0 \
     API_URL=${API_URL}
-    NPM_CONFIG_PRODUCTION=false
+    YARN_PRODUCTION=false
 
 # ENV check（このRUN命令は確認のためなので無くても良い）
 RUN echo ${HOME}
