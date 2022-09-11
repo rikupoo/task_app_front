@@ -11,7 +11,6 @@ ENV HOME=/${WORKDIR} \
     #https://ja.nuxtjs.org/faq/host-port/
     HOST=0.0.0.0 \
     API_URL=${API_URL}
-    YARN_PRODUCTION=false
 
 # ENV check（このRUN命令は確認のためなので無くても良い）
 RUN echo ${HOME}
@@ -23,7 +22,7 @@ WORKDIR ${HOME}
 COPY package*.json ./
 RUN yarn install
 
-COPY . .
+COPY . ./
 
 RUN yarn run build
 
