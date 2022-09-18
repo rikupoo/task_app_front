@@ -23,6 +23,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/sass/main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -51,6 +52,9 @@ export default {
   },
 
   vuetify: {
+    // 開発環境でcustomVariablesを有効にするフラグ
+    treeShake: true,
+    customVariables: ['~/assets/sass/variables.scss'],
     theme: {
       themes: {
         light: {
