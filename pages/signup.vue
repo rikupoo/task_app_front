@@ -1,23 +1,18 @@
 <template>
-  <bef-login-form-card>
-    <template
-      #form-card-content
-    >
-      <v-form
+  <bef-login-form-card #form-card-content>
+    <v-form
       ref="form"
-      v-model="isValid">
+      v-model="isValid"
+    >
       <user-form-name
         :name.sync="params.user.name"
       />
-      <!-- :email.sync 追加 -->
       <user-form-email
         :email.sync="params.user.email"
       />
-      <!-- :password.sync 追加 -->
       <user-form-password
         :password.sync="params.user.password"
       />
-      </v-form>
       <v-btn
         :disabled="!isValid || loading"
         :loading="loading"
@@ -28,10 +23,7 @@
       >
         登録する
       </v-btn>
-      <v-card-text>
-      {{ params }}
-    </v-card-text>
-    </template>
+    </v-form>
   </bef-login-form-card>
 </template>
 
