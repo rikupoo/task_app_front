@@ -49,8 +49,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    //環境変数のAPI_URLがある場合そちらが優先優先されるので下記は必要なくなる
-    // baseURL: process.env.API_URL
+    // クロスサイトリクエスト時にCookieを使用することを許可する
+    credentials: true
   },
 
   vuetify: {
