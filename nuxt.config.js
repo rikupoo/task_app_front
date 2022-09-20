@@ -28,8 +28,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    'plugins/axios', // axios.jsを読み込むように設定
-    'plugins/myInject'
+    'plugins/auth',
+    'plugins/axios',// axios.jsを読み込むように設定
+    'plugins/myInject',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
