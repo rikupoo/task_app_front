@@ -1,3 +1,4 @@
+const cryptoJs = require('crypto-js')
 const storage = window.localStorage
 const keys = { exp: 'exp' }
 
@@ -5,10 +6,26 @@ class Authentication {
   constructor (ctx) {
     this.store = ctx.store
     this.$axios = ctx.$axios
+    this.error = ctx.error
+    this.$config = ctx.$config
+  }
+   // 有効期限を暗号化
+  encrypt (exp) {
+    const expire = String(exp * 1000)
+    return cryptoJs.AES.encrypt(expire, this.$config.cryptoKey).toString()
+  }
+  // 有効期限を複合化
+  decrypt (exp) {
+    try {
+      const bytes = cryptoJs.AES.decrypt(exp, this.$config.cryptoKey)
+      return bytes.toString(cryptoJs.enc.Utf8) || this.removeStorage()
+    } catch (e) {
+      return this.removeStorage()
+    }
   }
   // storageに保存
   setStorage (exp) {
-    storage.setItem(keys.exp, exp * 1000)
+    storage.setItem(keys.exp, this.encrypt(exp))
   }
   // storageを削除
   removeStorage () {
@@ -33,10 +50,11 @@ class Authentication {
   }
   // storageの有効期限を複合して返す
   getExpire () {
-    return storage.getItem(keys.exp)
+    const expire = storage.getItem(keys.exp)
+    return expire ? this.decrypt(expire) : null
   }
 }
 
-export default ({ store, $axios }, inject) => {
-  inject('auth', new Authentication({ store, $axios }))
+export default ({ store, $axios, error, $config }, inject) => {
+  inject('auth', new Authentication({ store, $axios, error, $config }))
 }
