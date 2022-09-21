@@ -31,6 +31,7 @@ export default {
     'plugins/auth',
     'plugins/axios',// axios.jsを読み込むように設定
     'plugins/myInject',
+    'plugins/nuxtClientInit',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
