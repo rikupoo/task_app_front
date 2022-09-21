@@ -13,6 +13,7 @@ import befLoginAppBar from '~/components/beforeLogin/befLoginAppBar'
 import befLoginFooter from '~/components/beforeLogin/befLoginFooter'
 
 export default {
+  middleware: 'loggedInIsRedirects',
   components: {
     befLoginAppBar,
     befLoginFooter
