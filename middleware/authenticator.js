@@ -1,3 +1,4 @@
+
 export default async ({ $auth, store, route, redirect }) => {
   // トップページかつユーザーが存在しない場合、何もしない(layouts/welcome.vue表示のため)
   if (route.name === 'index' && !$auth.isUserPresent()) {
@@ -18,8 +19,8 @@ export default async ({ $auth, store, route, redirect }) => {
       store.dispatch('getRememberRoute', route)
     }
 
-    // TODO トースター出力
-    console.log(msg)
+    //トースター出力
+    store.dispatch('getToast', { msg })
     return redirect('/login')
 
   } else if (!$auth.isUserPresent()) {
