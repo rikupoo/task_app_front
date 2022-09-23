@@ -62,6 +62,7 @@ class Authentication {
     this.$axios.$delete('/api/v1/user_token')
     this.removeStorage()
     this.store.dispatch('getCurrentUser', null)
+    this.store.dispatch('getProjects', [])
   }
   // 認証エラー処理
   unauthError () {
