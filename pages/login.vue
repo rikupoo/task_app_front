@@ -73,9 +73,9 @@ export default {
     },
     // ログイン失敗
     authFailure ({ response }) {
-      if (response.status === 404) {
-        this.$store.dispatch('getToast', { msg: 'ユーザーが見つかりません😷' })
-      }
+      return (response.status === 404)
+        ? this.$store.dispatch('getToast', { msg: 'ユーザーが見つかりません😷' })
+        : this.$my.errorHandler(response)
     }
   }
 }
